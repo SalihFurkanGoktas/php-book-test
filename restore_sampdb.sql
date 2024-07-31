@@ -16,30 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `absence`
---
-
-DROP TABLE IF EXISTS `absence`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `absence` (
-  `student_id` int unsigned NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`student_id`,`date`),
-  CONSTRAINT `absence_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `absence`
---
-
-LOCK TABLES `absence` WRITE;
-/*!40000 ALTER TABLE `absence` DISABLE KEYS */;
-/*!40000 ALTER TABLE `absence` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `author`
 --
 
@@ -88,63 +64,6 @@ INSERT INTO `book` VALUES ('Neuromancer',2),('Do Androids Dream of Electric Shee
 UNLOCK TABLES;
 
 --
--- Table structure for table `grade_event`
---
-
-DROP TABLE IF EXISTS `grade_event`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `grade_event` (
-  `date` date NOT NULL,
-  `category` enum('T','Q') NOT NULL,
-  `event_id` int unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `grade_event`
---
-
-LOCK TABLES `grade_event` WRITE;
-/*!40000 ALTER TABLE `grade_event` DISABLE KEYS */;
-/*!40000 ALTER TABLE `grade_event` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `member`
---
-
-DROP TABLE IF EXISTS `member`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `member` (
-  `member_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `last_name` varchar(25) NOT NULL,
-  `first_name` varchar(25) NOT NULL,
-  `suffix` varchar(5) DEFAULT NULL,
-  `expiration` date DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `street` varchar(50) DEFAULT NULL,
-  `city` varchar(50) DEFAULT NULL,
-  `state` varchar(2) DEFAULT NULL,
-  `zip` varchar(10) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `interests` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `member`
---
-
-LOCK TABLES `member` WRITE;
-/*!40000 ALTER TABLE `member` DISABLE KEYS */;
-/*!40000 ALTER TABLE `member` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `ownership`
 --
 
@@ -169,60 +88,6 @@ LOCK TABLES `ownership` WRITE;
 /*!40000 ALTER TABLE `ownership` DISABLE KEYS */;
 INSERT INTO `ownership` VALUES (2,1),(3,2),(4,3),(9,3),(5,4),(7,4),(16,4),(17,4),(21,4),(6,5),(15,5),(8,6),(16,6),(10,7),(10,8),(11,9),(11,10),(11,11),(17,12),(18,13),(19,13),(20,14),(20,15),(20,16);
 /*!40000 ALTER TABLE `ownership` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `president`
---
-
-DROP TABLE IF EXISTS `president`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `president` (
-  `last_name` varchar(25) NOT NULL,
-  `first_name` varchar(25) NOT NULL,
-  `suffix` varchar(5) DEFAULT NULL,
-  `city` varchar(20) NOT NULL,
-  `state` varchar(2) NOT NULL,
-  `birth` date NOT NULL,
-  `death` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `president`
---
-
-LOCK TABLES `president` WRITE;
-/*!40000 ALTER TABLE `president` DISABLE KEYS */;
-/*!40000 ALTER TABLE `president` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `score`
---
-
-DROP TABLE IF EXISTS `score`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `score` (
-  `student_id` int unsigned NOT NULL,
-  `event_id` int unsigned NOT NULL,
-  `score` int NOT NULL,
-  PRIMARY KEY (`event_id`,`student_id`),
-  KEY `student_id` (`student_id`),
-  CONSTRAINT `score_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `grade_event` (`event_id`),
-  CONSTRAINT `score_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `score`
---
-
-LOCK TABLES `score` WRITE;
-/*!40000 ALTER TABLE `score` DISABLE KEYS */;
-/*!40000 ALTER TABLE `score` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -260,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-31 12:56:02
+-- Dump completed on 2024-07-31 14:11:55
