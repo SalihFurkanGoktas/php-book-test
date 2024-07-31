@@ -1,1 +1,1 @@
-# php-bookt-test
+local makinede çalıştırmak için dump'dan tekrar MySQL database'ini oluşturmak gerekir. restore_sampdb.sql adlı bir dump var. Ondan sonra php kodunun kuracağı bağlantıdaki user'ı oluşturmak için de add_testuser.sql dosyası var.
